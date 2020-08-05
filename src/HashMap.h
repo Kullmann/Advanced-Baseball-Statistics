@@ -17,7 +17,7 @@
 using namespace std;
 
 // Written by Sean Kullmann
-class HashTable
+class HashMap
 {
 public:
 	void insertPlayer(string playerName, vector<string> playerNumbers);

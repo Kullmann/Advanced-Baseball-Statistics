@@ -1,8 +1,8 @@
 // Written by Sean Kullmann
 
-#include "HashTable.h"
+#include "HashMap.h"
 
-void HashTable::insertPlayer(string playerName, vector<string> playerNumbers)
+void HashMap::insertPlayer(string playerName, vector<string> playerNumbers)
 {
     hTable.insert(make_pair(playerName, playerNumbers));
     ofstream outfile;
@@ -11,7 +11,7 @@ void HashTable::insertPlayer(string playerName, vector<string> playerNumbers)
     outfile << "\n" << playerName << "," << playerNumbers[0] << "," << playerNumbers[1] << "," << playerNumbers[2] << "," << playerNumbers[3] << "," << playerNumbers[4] << "," << playerNumbers[5] << "," << playerNumbers[6] << "," << playerNumbers[7] << "," << playerNumbers[8];
 }
 
-void HashTable::printTable()
+void HashMap::printTable()
 {
     unordered_map<string, vector<string>>:: iterator itr;
     for (itr = hTable.begin(); itr != hTable.end(); itr++)
@@ -25,7 +25,7 @@ void HashTable::printTable()
     }
 }
 
-bool HashTable::searchPlayer(string playerName)
+bool HashMap::searchPlayer(string playerName)
 {
     unordered_map<string, vector<string>>:: iterator itr;
     for (itr = hTable.begin(); itr != hTable.end(); itr++)
@@ -36,7 +36,7 @@ bool HashTable::searchPlayer(string playerName)
     return false;
 }
 
-vector<float> HashTable::searchTable(string playerName)
+vector<float> HashMap::searchTable(string playerName)
 {
     float isolatedPower = 0;
     float pitchesPerStart = 0;
@@ -71,7 +71,7 @@ vector<float> HashTable::searchTable(string playerName)
     return playerValues;
 }
 
-void HashTable::readData()
+void HashMap::readData()
 {
     ifstream myFile("src/stats.csv", ios::in);
 
@@ -114,12 +114,12 @@ void HashTable::readData()
     myFile.close();
 }
 
-std::chrono::duration<float> HashTable::getTimeElapsed()
+std::chrono::duration<float> HashMap::getTimeElapsed()
 {
     return mTimeElapsed;
 }
 
-void HashTable::setTimeElapsed(std::chrono::duration<float> timeElapsed)
+void HashMap::setTimeElapsed(std::chrono::duration<float> timeElapsed)
 {
     mTimeElapsed = timeElapsed;
 }

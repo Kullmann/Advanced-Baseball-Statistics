@@ -16,7 +16,7 @@
 #include <thread>
 #include <chrono>
 
-#include "HashTable.h"
+#include "HashMap.h"
 
 using namespace std;
 
@@ -65,7 +65,7 @@ int main()
     // End snippet
 
     //BinarySearchTree b;
-    HashTable h;
+    HashMap h;
 
     h.readData();
 
