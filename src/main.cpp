@@ -256,7 +256,7 @@ int main()
     vbox->add(textbox11);
 
     vector<string> userData;
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 9; i++)
         userData.push_back("");
 
     sf::Text playerEntered;
@@ -279,8 +279,31 @@ int main()
             userData[5] = textbox8->getText();
             userData[6] = textbox9->getText();
             userData[7] = textbox10->getText();
-            h.insertPlayer(textbox2->getText(), userData);
-            playerEntered.setString(player);
+            userData[8] = textbox11->getText();
+
+            bool invalidInput = false;
+            for (unsigned int i = 0; i < userData.size(); i++)
+            {
+                if (!(userData[i].find_first_not_of("0123456789") == string::npos) || userData[i] == "")
+                {
+                    invalidInput = true;
+                }
+            }
+
+            if (invalidInput)
+            {
+                playerEntered.setString("Invalid input");
+            }
+            else if (h.searchPlayer(textbox2->getText()))
+            {
+                playerEntered.setString("Player already in database");
+            }
+            else
+            {
+                h.insertPlayer(textbox2->getText(), userData);
+                playerEntered.setString(player);    
+            }
+            
         }
         else if (searchMethodChoice == 1)
         {

@@ -1,8 +1,14 @@
+// Written by Sean Kullmann
+
 #include "HashTable.h"
 
 void HashTable::insertPlayer(string playerName, vector<string> playerNumbers)
 {
     hTable.insert(make_pair(playerName, playerNumbers));
+    ofstream outfile;
+
+    outfile.open("src/stats.csv", std::ios_base::app);
+    outfile << "\n" << playerName << "," << playerNumbers[0] << "," << playerNumbers[1] << "," << playerNumbers[2] << "," << playerNumbers[3] << "," << playerNumbers[4] << "," << playerNumbers[5] << "," << playerNumbers[6] << "," << playerNumbers[7] << "," << playerNumbers[8];
 }
 
 void HashTable::printTable()
