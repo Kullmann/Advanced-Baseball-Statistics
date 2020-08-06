@@ -2,6 +2,7 @@
 
 #include "HashMap.h"
 
+// Inserts a player into the hash map
 void HashMap::insertPlayer(string playerName, vector<string> playerNumbers)
 {
     hTable.insert(make_pair(playerName, playerNumbers));
@@ -11,6 +12,7 @@ void HashMap::insertPlayer(string playerName, vector<string> playerNumbers)
     outfile << "\n" << playerName << "," << playerNumbers[0] << "," << playerNumbers[1] << "," << playerNumbers[2] << "," << playerNumbers[3] << "," << playerNumbers[4] << "," << playerNumbers[5] << "," << playerNumbers[6] << "," << playerNumbers[7] << "," << playerNumbers[8];
 }
 
+// Searchs to make sure the player exists in the Hash Map
 bool HashMap::searchPlayer(string playerName)
 {
     unordered_map<string, vector<string>>:: iterator itr;
@@ -22,6 +24,7 @@ bool HashMap::searchPlayer(string playerName)
     return false;
 }
 
+// Search hash map and calcules the advanced statistics
 vector<float> HashMap::searchTable(string playerName)
 {
     float isolatedPower = 0;
@@ -57,6 +60,7 @@ vector<float> HashMap::searchTable(string playerName)
     return playerValues;
 }
 
+// Reads in csv file into hash map
 void HashMap::readData()
 {
     ifstream myFile("src/stats.csv", ios::in);
