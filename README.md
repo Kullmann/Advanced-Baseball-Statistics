@@ -1,3 +1,13 @@
+Baseball Advanced Statistics
+============================
+
+How to run on ubuntu
+1. Install sfml from https://www.sfml-dev.org/
+2. Type make in console when inside the directory with the makefile inside of it
+3. Type ./main to run the program
+
+## Below is the README.md for the extra SFML library we used with the licensing
+
 SFML Widgets
 ============
 

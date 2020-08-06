@@ -17,16 +17,11 @@
 #include <chrono>
 
 #include "HashMap.h"
+#include "bst.h"
+
+/* Source for snippets of boilerplate code, and what the gui was built on https://github.com/abodelot/sfml-widgets */
 
 using namespace std;
-
-// Written by Nick Verdugo and Turner Shultz
-class BinarySearchTree
-{
-public:
-
-private:
-};
 
 // Snippet of boilerplate code for gui from sfml-widgets library
 sf::Color hex2color(const std::string& hexcolor)
@@ -64,7 +59,7 @@ int main()
     };
     // End snippet
 
-    //BinarySearchTree b;
+    bst b;
     HashMap h;
 
     h.readData();
@@ -180,23 +175,43 @@ int main()
         {
             if (h.searchPlayer(textbox->getText()))
             {
-                vector<float> test = h.searchTable(textbox->getText());
+                vector<float> advValues = h.searchTable(textbox->getText());
                 sfTableText[1].setString(textbox->getText());
-                sfTableText[3].setString(to_string(test[0]));
-                sfTableText[5].setString(to_string(test[1]));
-                sfTableText[7].setString(to_string(test[2]));
+                sfTableText[3].setString(to_string(advValues[0]));
+                sfTableText[5].setString(to_string(advValues[1]));
+                sfTableText[7].setString(to_string(advValues[2]));
+                timeToSearch.setPosition(310, 135);
                 timeToSearchMethod = "Hash Map Search Time: " + to_string(h.getTimeElapsed().count()) + " seconds.";
                 timeToSearch.setString(timeToSearchMethod);
                 banner.setString("Player found");
             }
             else
+            {
                 banner.setString("Player not found");
+                timeToSearch.setString("");
+            }
 
         }
         else if (searchMethodChoice == 1)
         {
-            // b.setName(textbox->getText());
-            // sfTableText[5].setString(b.getName());  
+            vector<double> advValues = b.search(textbox->getText(), b);
+            if (advValues.size() != 0 )
+            {
+                sfTableText[1].setString(textbox->getText());
+                sfTableText[3].setString(to_string(advValues[0]));
+                sfTableText[5].setString(to_string(advValues[2]));
+                sfTableText[7].setString(to_string(advValues[1]));
+                timeToSearch.setPosition(290, 135);
+                timeToSearchMethod = "Binary Search Tree Search Time: " + to_string(b.getTimeElapsed().count()) + " seconds.";
+                timeToSearch.setString(timeToSearchMethod);
+                banner.setString("Player found");
+            }
+            else
+            {
+                banner.setString("Player not found");
+                timeToSearch.setString("");
+            }
+            
         }
     });
     vbox->add(textbox);
@@ -285,19 +300,14 @@ int main()
             for (unsigned int i = 0; i < userData.size(); i++)
             {
                 if (!(userData[i].find_first_not_of("0123456789") == string::npos) || userData[i] == "")
-                {
                     invalidInput = true;
-                }
+
             }
 
             if (invalidInput)
-            {
                 playerEntered.setString("Invalid input");
-            }
             else if (h.searchPlayer(textbox2->getText()))
-            {
                 playerEntered.setString("Player already in database");
-            }
             else
             {
                 h.insertPlayer(textbox2->getText(), userData);
@@ -307,7 +317,7 @@ int main()
         }
         else if (searchMethodChoice == 1)
         {
-
+            // User Input not finished by Nicholas Verdugo and Turner Shultz
         }
     });
 

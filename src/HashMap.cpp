@@ -1,4 +1,4 @@
-// Written by Sean Kullmann
+// Whole class written by Sean Kullmann
 
 #include "HashMap.h"
 
@@ -9,20 +9,6 @@ void HashMap::insertPlayer(string playerName, vector<string> playerNumbers)
 
     outfile.open("src/stats.csv", std::ios_base::app);
     outfile << "\n" << playerName << "," << playerNumbers[0] << "," << playerNumbers[1] << "," << playerNumbers[2] << "," << playerNumbers[3] << "," << playerNumbers[4] << "," << playerNumbers[5] << "," << playerNumbers[6] << "," << playerNumbers[7] << "," << playerNumbers[8];
-}
-
-void HashMap::printTable()
-{
-    unordered_map<string, vector<string>>:: iterator itr;
-    for (itr = hTable.begin(); itr != hTable.end(); itr++)
-    {
-        cout << itr->first;
-        for (auto &j : itr->second)
-        {
-            cout << " " <<  j;
-        }
-        cout << "\n";
-    }
 }
 
 bool HashMap::searchPlayer(string playerName)

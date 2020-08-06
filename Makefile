@@ -1,4 +1,5 @@
 # Makefile boilerplate from sfml-widgets library and modified to work for our project
+# Makefile source https://github.com/abodelot/sfml-widgets
 TARGET  := main
 SRCDIR  := src
 SRC     := $(shell find $(SRCDIR) -name "*.cpp" -type f)

@@ -16,24 +16,16 @@
 
 using namespace std;
 
-// Written by Sean Kullmann
+// Whole header file written by Sean Kullmann
 class HashMap
 {
 public:
 	void insertPlayer(string playerName, vector<string> playerNumbers);
-
-	void printTable();
-
     bool searchPlayer(string playerName);
-
 	vector<float> searchTable(string playerName);
-
 	void readData();
-
     std::chrono::duration<float> getTimeElapsed();
-
     void setTimeElapsed(std::chrono::duration<float> timeElapsed);
-
 
 private:
 	unordered_map<string, vector<string>> hTable;
