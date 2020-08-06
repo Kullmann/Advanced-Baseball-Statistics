@@ -6,7 +6,7 @@ How to run on ubuntu
 2. Type make in console when inside the directory with the makefile inside of it
 3. Type ./main to run the program
 
-## Below is the README.md for the extra SFML library we used with the licensing
+## Below is the README.md for the extra SFML widgets library for the gui we used with the licensing
 
 SFML Widgets
 ============
